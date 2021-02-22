@@ -27,10 +27,6 @@ function getAllWorkout()
     return getAll();
 }
 
-function getAllWorkoutFromUser($userId)
-{
-}
-
 if (isset($_GET['action'])) {
     isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
 }
