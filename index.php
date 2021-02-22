@@ -5,6 +5,7 @@
 // dynamically so that it ends up including the view.
 
 require_once("./config/constants.php");
+
 if (isset($_GET['controller'])) {
     if ($_GET['controller'] == "userDetail") {
         $path = "./controllers/user/{$_GET['controller']}Controller.php";
@@ -15,6 +16,14 @@ if (isset($_GET['controller'])) {
         require_once("./views/user/{$_GET['controller']}View.php");
     }
     if ($_GET['controller'] == "workoutDetail") {
+        $path = "./controllers/workout/{$_GET['controller']}Controller.php";
+        if (isset($_GET['action'])) {
+            $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action{$_GET['action']()}";
+        }
+        require_once($path);
+        require_once("./views/workout/{$_GET['controller']}View.php");
+    }
+    if ($_GET['controller'] == "dashboard") {
         $path = "./controllers/workout/{$_GET['controller']}Controller.php";
         if (isset($_GET['action'])) {
             $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action{$_GET['action']()}";
