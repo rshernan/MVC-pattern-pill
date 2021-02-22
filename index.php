@@ -5,6 +5,7 @@
 // dynamically so that it ends up including the view.
 
 require_once("./config/constants.php");
+require_once("./controllers/login/loginController.php");
 
 if (isset($_GET['controller']) && $_GET['controller'] == "userDetail") {
     $path = "./controllers/user/{$_GET['controller']}Controller.php";

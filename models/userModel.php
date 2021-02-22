@@ -12,6 +12,45 @@ function getDatabase()
     return new mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_database);
 }
 
+function validateUser($email, $password)
+{
+    $usersObject = getDatabase()->query("SELECT * FROM users WHERE email='{$email}' AND password='{$password}'");
+    echo '<pre>';
+    var_dump($usersObject);
+
+    if (isset($usersObject)) {
+        $usersArray = $usersObject->fetch_assoc();
+        $userId = $usersArray['id'];
+    } else {
+        $userId = false;
+    }
+
+    return $userId;
+}
+
+function saveSessionData($userId)
+{
+    session_start();
+
+    $usersObject = getDatabase()->query("SELECT * FROM users WHERE id = '{$userId}'");
+    $user = $usersObject->fetch_assoc();
+
+    $_SESSION["userId"] = $user["id"];
+    $_SESSION["name"] = $user["name"];
+    $_SESSION["password"] = $user["password"];
+    $_SESSION["email"] = $user["email"];
+}
+
+
+function logout()
+{
+    session_start();
+    session_destroy();
+
+    header("Location: index.php");
+    exit();
+}
+
 function get($id)
 {
     $query = getDatabase()->query("select * from users where id=" . $id);
