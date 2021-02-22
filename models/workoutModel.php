@@ -18,10 +18,10 @@ function get($id)
     return $query->fetch_assoc();
 }
 
-function getAllFromworkout($idworkout)
+function getAllFromUser($iduser)
 {
     $workouts = [];
-    $query = getDatabase()->query("select * from workout where workout_id=" . $idworkout);
+    $query = getDatabase()->query("select * from workout where user_id=" . $iduser);
     while ($workout = $query->fetch_assoc()) {
         array_push($workouts, $workout);
     }
