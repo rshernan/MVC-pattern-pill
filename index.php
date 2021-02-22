@@ -8,31 +8,19 @@ require_once("./config/constants.php");
 
 if (isset($_GET['controller'])) {
     if ($_GET['controller'] == "userDetail") {
-        $path = "./controllers/user/{$_GET['controller']}Controller.php";
-        if (isset($_GET['action'])) {
-            $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action{$_GET['action']()}";
-        }
-        require_once($path);
-        require_once("./views/user/{$_GET['controller']}View.php");
+        require_once(CONTROLLERS . "/user/{$_GET['controller']}Controller.php");
+        require_once(VIEWS . "/user/{$_GET['controller']}View.php");
     }
     if ($_GET['controller'] == "workoutDetail") {
-        $path = "./controllers/workout/{$_GET['controller']}Controller.php";
-        if (isset($_GET['action'])) {
-            $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action{$_GET['action']()}";
-        }
-        require_once($path);
-        require_once("./views/workout/{$_GET['controller']}View.php");
+        require_once(CONTROLLERS . "/workout/{$_GET['controller']}Controller.php");
+        require_once(VIEWS . "/workout/{$_GET['controller']}View.php");
     }
-    if (isset($_GET['controller']) && $_GET['controller'] == "workoutDashboard") {
-        $path = "./controllers/workout/{$_GET['controller']}Controller.php";
-        if (isset($_GET['action'])) {
-            $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action{$_GET['action']()}";
-        }
-        require_once($path);
-        require_once("./views/workout/{$_GET['controller']}View.php");
+    if ($_GET['controller'] == "workoutDashboard") {
+        require_once(CONTROLLERS . "/workout/{$_GET['controller']}Controller.php");
+        require_once(VIEWS . "/workout/{$_GET['controller']}View.php");
     }
 } else {
-    require_once("./controllers/login/loginController.php");
+    require_once(CONTROLLERS . "/login/loginController.php");
 }
 
 
