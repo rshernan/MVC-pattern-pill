@@ -41,7 +41,6 @@ function saveSessionData($userId)
     $_SESSION["email"] = $user["email"];
 }
 
-
 function logout()
 {
     session_start();
