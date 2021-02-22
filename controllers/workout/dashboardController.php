@@ -2,9 +2,9 @@
 require_once("./config/constants.php");
 require_once("./models/workoutModel.php");
 
-function getWorkout($id)
+function addWorkout($workout)
 {
-    return get($id);
+    return get($workout);
 }
 
 function deleteWorkout($id)
