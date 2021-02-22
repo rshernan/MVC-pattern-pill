@@ -6,12 +6,13 @@
 
 require_once("./config/constants.php");
 
-if (isset($_GET['controller']) && $_GET['controller'] == "userDetailController") {
+if (isset($_GET['controller']) && $_GET['controller'] == "userDetail") {
+    $path = "./controllers/user/{$_GET['controller']}Controller.php";
     if (isset($_GET['action'])) {
-        require_once("./controllers/user/" . $_GET['action'] . "Controller.php");
-        isset($_GET['param']) ? $_GET['action']($_GET['param']) : $_GET['action'];
+        isset($_GET['param']) ? $path .= "action={$_GET['action']($_GET['param'])}" : $path .= "action={$_GET['action']()}";
     }
-    require_once("./views/user/userDetailView.php");
+    require_once($path);
+    require_once("./views/user/{$_GET['controller']}View.php");
 };
 
 // TODO Implement the logic to include the controller passed by the URL dynamically
