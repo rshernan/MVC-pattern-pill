@@ -9,7 +9,7 @@ require_once("./config/constants.php");
 if (isset($_GET['controller']) && $_GET['controller'] == "userDetail") {
     $path = "./controllers/user/{$_GET['controller']}Controller.php";
     if (isset($_GET['action'])) {
-        isset($_GET['param']) ? $path .= "action={$_GET['action']($_GET['param'])}" : $path .= "action={$_GET['action']()}";
+        $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action={$_GET['action']()}";
     }
     require_once($path);
     require_once("./views/user/{$_GET['controller']}View.php");
