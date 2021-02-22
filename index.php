@@ -7,5 +7,6 @@ require_once("./config/constants.php");
 require_once(CONTROLLERS . "/login/loginController.php");
 
 
+
 // TODO Implement the logic to include the controller passed by the URL dynamically
 // In the event that the controller passed by URL does not exist, you must show the error view.

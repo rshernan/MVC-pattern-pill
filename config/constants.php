@@ -1,5 +1,6 @@
 <?php
 define("BASE_PATH", getcwd());
+
 //CONTROLLERS
 define("CONTROLLERS", BASE_PATH . '/controllers/');
 
