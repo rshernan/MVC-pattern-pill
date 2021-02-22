@@ -8,7 +8,7 @@ require_once("./config/constants.php");
 
 if (isset($_GET['controller']) && $_GET['controller'] == "userDetailController") {
     if (isset($_GET['action'])) {
-        require_once("./controllers/user/userDetailController.php");
+        require_once("./controllers/user/" . $_GET['action'] . "Controller.php");
         isset($_GET['param']) ? $_GET['action']($_GET['param']) : $_GET['action'];
     }
     require_once("./views/user/userDetailView.php");
