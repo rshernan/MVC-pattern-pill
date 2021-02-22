@@ -9,11 +9,19 @@ require_once("./config/constants.php");
 if (isset($_GET['controller']) && $_GET['controller'] == "userDetail") {
     $path = "./controllers/user/{$_GET['controller']}Controller.php";
     if (isset($_GET['action'])) {
-        $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action={$_GET['action']()}";
+        $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action{$_GET['action']()}";
     }
     require_once($path);
     require_once("./views/user/{$_GET['controller']}View.php");
 };
 
+if (isset($_GET['controller']) && $_GET['controller'] == "workoutDetail") {
+    $path = "./controllers/workout/{$_GET['controller']}Controller.php";
+    if (isset($_GET['action'])) {
+        $path .= isset($_GET['param']) ?  "&action={$_GET['action']($_GET['param'])}" : "&action{$_GET['action']()}";
+    }
+    require_once($path);
+    require_once("./views/workout/{$_GET['controller']}View.php");
+};
 // TODO Implement the logic to include the controller passed by the URL dynamically
 // In the event that the controller passed by URL does not exist, you must show the error view.
