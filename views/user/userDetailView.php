@@ -20,11 +20,15 @@
             <input type="password" name="password" id="password">';
         }
         ?>
-        <input type="submit" value=<?= (isset($data)) ? "modificar" : "crear" ?>>
+        <input type="submit" value=<?= (isset($data)) ? "update" : "create" ?>>
     </form>
     <?php
-    echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=logout'><button>Logout</button></a>";
-    echo "<a href=http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=getAllWorkoutFromUser&param={$_SESSION['userId']}>Go to dashboard</a>"
+    if (isset($_SESSION['userId'])){
+        echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=logout'><button>Logout</button></a>";
+        echo "<a href=http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=getAllWorkoutFromUser&param={$_SESSION['userId']}>Go to dashboard</a>";
+    }else{
+        echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=logout'>Go to login</a>";
+    }
     ?>
 </body>
 

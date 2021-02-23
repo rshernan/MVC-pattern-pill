@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form class="form" action="index.php" method="GET">
+    <form class="form" action="index.php" method="POST">
         <label for="email" >Email:</label>
         <input id="email" type="email" class="form-control" name="email" require>
         <label for="password">Password:</label>

@@ -2,9 +2,9 @@
 
 require("./models/userModel.php");
 
-if (isset($_GET["email"])) {
-    if ($user = validateUser($_GET["email"], $_GET["password"])) {
-        saveSessionData($user);
+if (isset($_POST["email"])) {
+    if ($userId = validateUser($_POST["email"], $_POST["password"])) {
+        saveSessionData($userId);
         $url = 'http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=getAllWorkoutFromUser&param='. $_SESSION["userId"];
         header('Location: ' . $url);
         exit();
@@ -13,5 +13,5 @@ if (isset($_GET["email"])) {
         exit();
     }
 } else {
-    require_once(VIEWS . "/login/loginView.php");//igual estas vistas hay que borrarlas de aquí, pues se van a incluir en el index??
+    require_once(VIEWS . "/login/loginView.php");
 }

@@ -22,6 +22,7 @@ function updateWorkout()
     $workout = getQueryStringParameters();
     update($workout);
     header("Location: http://localhost/MVC-pattern-pill/index.php?&controller=workoutDetail&action=getWorkout&param={$workout['id']}");
+    exit();
 }
 
 function addWorkout()
@@ -31,6 +32,7 @@ function addWorkout()
     $workout["user_id"]=$_SESSION["userId"];
     create($workout);
     header("Location: http://localhost/MVC-pattern-pill/index.php?&controller=workoutDashboard&action=getAllWorkoutFromUser&param={$_SESSION["userId"]}");
+    exit();
 }
 
 function deleteWorkout($id)

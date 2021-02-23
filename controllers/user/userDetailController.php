@@ -13,23 +13,19 @@ function getUser($id)
 
 function updateUser()
 {
-    $user = getQueryStringParameters();
+    $user = $_POST;
     $user['id'] = $_SESSION['userId'];
     update($user);
     header("Location: http://localhost/MVC-pattern-pill/index.php?&controller=userDetail&action=getUser&param={$user['id']}");
+    exit();
 }
 
 function addUser()
 {
-    $id = create(getQueryStringParameters());
+    $id = create($_POST);
     saveSessionData($id);
     header("Location: http://localhost/MVC-pattern-pill/index.php?&controller=workoutDashboard&action=getAllWorkoutFromUser&param={$id}");
-}
-
-function getQueryStringParameters(): array
-{
-    parse_str(file_get_contents('php://input'), $query);
-    return $query;
+    exit();
 }
 
 function logoutUser (){
@@ -42,7 +38,7 @@ if (isset($_GET['action'])) {
         header('Location: ' . $url);
         exit();
     }
-    isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
+    isset($_GET['param']) ?  call_user_func($_GET['action'], $_GET['param']) : call_user_func($_GET['action']);
 } else {
     require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }

@@ -15,16 +15,12 @@ function getDatabase()
 function validateUser($email, $password)
 {
     $usersObject = getDatabase()->query("SELECT * FROM users WHERE email='{$email}' AND password='{$password}'");
-    echo '<pre>';
-    var_dump($usersObject);
 
-    if (isset($usersObject)) {
-        $usersArray = $usersObject->fetch_assoc();
+    if ($usersArray = $usersObject->fetch_assoc()) {
         $userId = $usersArray['id'];
     } else {
         $userId = false;
     }
-
     return $userId;
 }
 
@@ -37,7 +33,6 @@ function saveSessionData($userId)
 
     $_SESSION["userId"] = $user["id"];
     $_SESSION["name"] = $user["name"];
-    $_SESSION["password"] = $user["password"];
     $_SESSION["email"] = $user["email"];
 }
 

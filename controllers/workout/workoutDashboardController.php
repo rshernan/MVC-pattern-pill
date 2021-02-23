@@ -31,11 +31,5 @@ function getAllWorkoutFromUser($userId)
 }
 
 if (isset($_GET['action'])) {
-    isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
-}
-
-function getQueryStringParameters(): array
-{
-    parse_str(file_get_contents('php://input'), $query);
-    return $query;
+    isset($_GET['param']) ?  call_user_func($_GET['action'], $_GET['param']) : call_user_func($_GET['action']);
 }
