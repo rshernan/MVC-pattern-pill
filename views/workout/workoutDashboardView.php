@@ -9,8 +9,17 @@
 </head>
 
 <body>
+    <h2>Workout dashboard</h2>
     <?php
-    var_dump($data);
+    foreach ($data as $workout) {
+        echo $workout["name"];
+        echo $workout["mode"];
+        echo $workout["duration"];
+        echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=workoutDetail&action=getWorkout&param=" . $workout["id"] . "'><button>Details</button></a>";
+        echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=deleteWorkout&param=" . $workout["id"] . "'><button>Delete workout</button></a>";
+        echo "<br>";
+    }
+    echo "<a href=''><Logout</button></a>";
     ?>
 
 </body>

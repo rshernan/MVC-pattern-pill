@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require_once("./config/constants.php");
 require_once("./models/workoutModel.php");
 
@@ -6,14 +9,12 @@ function getWorkout($id)
 {
     return get($id);
 }
-function addWorkout()
-{
-    return get(getQueryStringParameters());
-}
 
 function deleteWorkout($id)
 {
-    return delete($id);
+    delete($id);
+    var_dump($_SESSION["userId"]);
+    getAllWorkoutFromUser($_SESSION["userId"]);
 }
 
 function getAllWorkoutFromUser($userId)

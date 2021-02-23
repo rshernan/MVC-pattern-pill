@@ -5,7 +5,7 @@ require("./models/userModel.php");
 if (isset($_GET["email"])) {
     if ($user = validateUser($_GET["email"], $_GET["password"])) {
         saveSessionData($user);
-        $url = 'http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=getAllWorkout';
+        $url = 'http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=getAllWorkoutFromUser&param='. $_SESSION["userId"];
         header('Location: ' . $url);
         exit();
     } else {

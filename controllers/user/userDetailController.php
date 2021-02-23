@@ -4,6 +4,7 @@ require_once("./models/userModel.php");
 
 function getUser($id)
 {
+    require_once(VIEWS . "/user/{$_GET['controller']}View.php");
     return get($id);
 }
 
