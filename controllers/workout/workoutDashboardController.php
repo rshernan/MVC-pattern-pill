@@ -2,9 +2,9 @@
 require_once("./config/constants.php");
 require_once("./models/workoutModel.php");
 
-function addWorkout($workout)
+function addWorkout()
 {
-    return get($workout);
+    return get(getQueryStringParameters());
 }
 
 function deleteWorkout($id)
@@ -24,4 +24,10 @@ function getAllWorkoutFromUser($userId)
 
 if (isset($_GET['action'])) {
     isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
+}
+
+function getQueryStringParameters(): array
+{
+    parse_str(file_get_contents('php://input'), $query);
+    return $query;
 }

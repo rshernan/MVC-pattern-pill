@@ -12,9 +12,9 @@ function updateUser($user)
     return update($user);
 }
 
-function addUser($user)
+function addUser()
 {
-    return create($user);
+    return create(getQueryStringParameters());
 }
 
 function deleteUser($id)
@@ -27,6 +27,13 @@ function getAllUser()
     return getAll();
 }
 
+function getQueryStringParameters(): array
+{
+    parse_str(file_get_contents('php://input'), $query);
+    return $query;
+}
+
 if (isset($_GET['action'])) {
+    echo $_GET['action'];
     isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
 }

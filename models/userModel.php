@@ -85,12 +85,16 @@ function update(array $user)
 
 function create(array $user)
 {
-    $keys = "";
-    $values = "";
-    foreach ($user as $key => $value) {
-        $keys .= "{$key},";
-        $values .= "'{$value}',";
+    try {
+        $keys = "";
+        $values = "";
+        foreach ($user as $key => $value) {
+            $keys .= "{$key},";
+            $values .= "'{$value}',";
+        }
+        $rtrim = 'rtrim';
+        getDatabase()->query("insert into users ({$rtrim($keys, ",")}) values ({$rtrim($values, ",")})");
+    } catch (Exception $e) {
+        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
     }
-    $rtrim = 'rtrim';
-    echo "insert ({$rtrim($keys, ",")}) into users values ({$rtrim($values, ",")})";
 }

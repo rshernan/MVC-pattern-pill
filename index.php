@@ -20,7 +20,7 @@ if (isset($_GET['controller'])) {
         require_once(VIEWS . "/workout/{$_GET['controller']}View.php");
     }
 } else {
-    require_once(CONTROLLERS . "/login/loginController.php");
+    //require_once(CONTROLLERS . "/login/loginController.php");
 }
 
 
