@@ -9,7 +9,6 @@ require_once("./config/constants.php");
 if (isset($_GET['controller'])) {
     if ($_GET['controller'] == "userDetail") {
         require_once(CONTROLLERS . "/user/{$_GET['controller']}Controller.php");
-        require_once(VIEWS . "/user/{$_GET['controller']}View.php");
     }
     if ($_GET['controller'] == "workoutDetail") {
         require_once(CONTROLLERS . "/workout/{$_GET['controller']}Controller.php");

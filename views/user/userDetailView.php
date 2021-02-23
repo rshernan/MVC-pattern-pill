@@ -20,7 +20,7 @@
             <input type="password" name="password" id="password">';
         }
         ?>
-        <input type="submit" value=<?= (isset($_GET['action'])) ? "modificar" : "crear" ?>>
+        <input type="submit" value=<?= (isset($_SESSION['user'])) ? "modificar" : "crear" ?>>
     </form>
 </body>
 

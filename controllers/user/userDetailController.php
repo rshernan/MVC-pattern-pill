@@ -4,17 +4,22 @@ require_once("./models/userModel.php");
 
 function getUser($id)
 {
-    return get($id);
+    $data = get($id);
+    require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }
 
 function updateUser($user)
 {
-    return update($user);
+    session_start();
+    $user['id'] = $_SESSION['userId'];
+    update($user);
+    header("Location: http://localhost/index.php?&controller=userDetail&action=getUser&param={$user['id']}");
 }
 
 function addUser()
 {
-    return create(getQueryStringParameters());
+    $data = create(getQueryStringParameters());
+    require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }
 
 function deleteUser($id)
@@ -34,6 +39,5 @@ function getQueryStringParameters(): array
 }
 
 if (isset($_GET['action'])) {
-    echo $_GET['action'];
     isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
 }
