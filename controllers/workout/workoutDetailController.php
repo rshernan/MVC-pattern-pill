@@ -13,18 +13,24 @@ require_once("./models/workoutModel.php");
 
 function getWorkout($id)
 {
+    $data = get($id);
     require_once(VIEWS . "/workout/{$_GET['controller']}View.php");
-    return get($id);
 }
 
-function updateWorkout($workout)
+function updateWorkout()
 {
-    return update($workout);
+    $workout = getQueryStringParameters();
+    update($workout);
+    header("Location: http://localhost/MVC-pattern-pill/index.php?&controller=workoutDetail&action=getWorkout&param={$workout['id']}");
 }
 
-function addWorkout($workout)
+function addWorkout()
 {
-    return create($workout);
+    $workout = getQueryStringParameters();
+    array_pop($workout);
+    $workout["user_id"]=$_SESSION["userId"];
+    create($workout);
+    header("Location: http://localhost/MVC-pattern-pill/index.php?&controller=workoutDashboard&action=getAllWorkoutFromUser&param={$_SESSION["userId"]}");
 }
 
 function deleteWorkout($id)
@@ -32,11 +38,14 @@ function deleteWorkout($id)
     return delete($id);
 }
 
-function getAllWorkout()
+function getQueryStringParameters(): array
 {
-    return getAll();
+    parse_str(file_get_contents('php://input'), $query);
+    return $query;
 }
 
 if (isset($_GET['action'])) {
     isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
+}else{
+    require_once(VIEWS . "/workout/{$_GET['controller']}View.php");
 }

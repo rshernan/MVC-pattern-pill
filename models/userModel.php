@@ -93,7 +93,9 @@ function create(array $user)
             $values .= "'{$value}',";
         }
         $rtrim = 'rtrim';
-        getDatabase()->query("insert into users ({$rtrim($keys, ",")}) values ({$rtrim($values, ",")})");
+        $dataBase = getDatabase();
+        $dataBase->query("insert into users ({$rtrim($keys, ",")}) values ({$rtrim($values, ",")})");
+        return $dataBase->insert_id;
     } catch (Exception $e) {
         echo 'Excepción capturada: ',  $e->getMessage(), "\n";
     }

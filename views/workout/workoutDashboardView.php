@@ -19,6 +19,8 @@
         echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=deleteWorkout&param=" . $workout["id"] . "'><button>Delete workout</button></a>";
         echo "<br>";
     }
+
+    echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=workoutDetail'><button>Create workout</button></a>";
     echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=logout'><button>Logout</button></a>";
     echo "<a href=http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=getUser&param={$_SESSION['userId']}>editar usuario</a>"
     ?>

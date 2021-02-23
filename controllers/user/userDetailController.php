@@ -2,32 +2,28 @@
 
 session_start();
 
-if (!isset($_SESSION["userId"])){
-    $url = 'http://localhost/MVC-pattern-pill/index.php';
-    header('Location: ' . $url);
-    exit();
-}
 require_once("./config/constants.php");
 require_once("./models/userModel.php");
 
 function getUser($id)
-{;
+{
     $data = get($id);
     require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }
 
-function updateUser($user)
+function updateUser()
 {
-    session_start();
+    $user = getQueryStringParameters();
     $user['id'] = $_SESSION['userId'];
     update($user);
-    header("Location: http://localhost/index.php?&controller=userDetail&action=getUser&param={$user['id']}");
+    header("Location: http://localhost/MVC-pattern-pill/index.php?&controller=userDetail&action=getUser&param={$user['id']}");
 }
 
 function addUser()
 {
-    $data = create(getQueryStringParameters());
-    require_once(VIEWS . "/user/{$_GET['controller']}View.php");
+    $id = create(getQueryStringParameters());
+    saveSessionData($id);
+    header("Location: http://localhost/MVC-pattern-pill/index.php?&controller=workoutDashboard&action=getAllWorkoutFromUser&param={$id}");
 }
 
 function getQueryStringParameters(): array
@@ -41,6 +37,11 @@ function logoutUser (){
 }
 
 if (isset($_GET['action'])) {
+    if (!isset($_SESSION["userId"]) && $_GET["action"]!="addUser"){
+        $url = 'http://localhost/MVC-pattern-pill/index.php';
+        header('Location: ' . $url);
+        exit();
+    }
     isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
 } else {
     require_once(VIEWS . "/user/{$_GET['controller']}View.php");

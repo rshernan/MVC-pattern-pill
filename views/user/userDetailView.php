@@ -22,6 +22,10 @@
         ?>
         <input type="submit" value=<?= (isset($data)) ? "modificar" : "crear" ?>>
     </form>
+    <?php
+    echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=logout'><button>Logout</button></a>";
+    echo "<a href=http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=getAllWorkoutFromUser&param={$_SESSION['userId']}>Go to dashboard</a>"
+    ?>
 </body>
 
 </html>

@@ -16,6 +16,8 @@
         <input id="password" type="password" class="form-control" name="password" require>
         <input type="submit" value="log in">
     </form>
+    <a href="http://localhost/MVC-pattern-pill/index.php?controller=userDetail">Create new user</a>
+    
 </body>
 
 </html>
