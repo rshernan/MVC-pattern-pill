@@ -1,25 +1,26 @@
 <?php
+
+session_start();
+
 require_once("./config/constants.php");
 require_once("./models/workoutModel.php");
 
-function addWorkout()
+function getWorkout($id)
 {
-    return get(getQueryStringParameters());
+    return get($id);
 }
 
 function deleteWorkout($id)
 {
-    return delete($id);
-}
-
-function getAllWorkout()
-{
-    return getAll();
+    delete($id);
+    var_dump($_SESSION["userId"]);
+    getAllWorkoutFromUser($_SESSION["userId"]);
 }
 
 function getAllWorkoutFromUser($userId)
 {
-    getAllFromUser($userId);
+    $data = getAllFromUser($userId);
+    require_once(VIEWS . "/workout/{$_GET['controller']}View.php");
 }
 
 if (isset($_GET['action'])) {

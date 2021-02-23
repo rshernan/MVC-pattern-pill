@@ -1,9 +1,11 @@
 <?php
+
 require_once("./config/constants.php");
 require_once("./models/workoutModel.php");
 
 function getWorkout($id)
 {
+    require_once(VIEWS . "/workout/{$_GET['controller']}View.php");
     return get($id);
 }
 
