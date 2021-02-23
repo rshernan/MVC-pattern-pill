@@ -20,7 +20,9 @@
         echo "<br>";
     }
     echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=logout'><button>Logout</button></a>";
+    echo "<a href=http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=getUser&param={$_SESSION['userId']}>editar usuario</a>"
     ?>
+
 
 </body>
 

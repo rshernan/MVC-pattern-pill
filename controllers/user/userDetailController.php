@@ -11,29 +11,23 @@ require_once("./config/constants.php");
 require_once("./models/userModel.php");
 
 function getUser($id)
-{
+{;
+    $data = get($id);
     require_once(VIEWS . "/user/{$_GET['controller']}View.php");
-    return get($id);
 }
 
 function updateUser($user)
 {
-    return update($user);
+    session_start();
+    $user['id'] = $_SESSION['userId'];
+    update($user);
+    header("Location: http://localhost/index.php?&controller=userDetail&action=getUser&param={$user['id']}");
 }
 
 function addUser()
 {
-    return create(getQueryStringParameters());
-}
-
-function deleteUser($id)
-{
-    return delete($id);
-}
-
-function getAllUser()
-{
-    return getAll();
+    $data = create(getQueryStringParameters());
+    require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }
 
 function getQueryStringParameters(): array
@@ -47,6 +41,7 @@ function logoutUser (){
 }
 
 if (isset($_GET['action'])) {
-    echo $_GET['action'];
     isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
+} else {
+    require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }
