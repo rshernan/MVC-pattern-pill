@@ -64,5 +64,5 @@ function create(array $workout)
         $values .= "'{$value}',";
     }
     $rtrim = 'rtrim';
-    echo "insert ({$rtrim($keys, ",")}) into workout values ({$rtrim($values, ",")})";
+    getDatabase()->query("insert into workout ({$rtrim($keys, ",")}) values ({$rtrim($values, ",")})");
 }
