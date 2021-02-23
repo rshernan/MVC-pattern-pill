@@ -12,14 +12,10 @@ function deleteWorkout($id)
     return delete($id);
 }
 
-function getAllWorkout()
-{
-    return getAll();
-}
-
 function getAllWorkoutFromUser($userId)
 {
-    getAllFromUser($userId);
+    $data = getAllFromUser($userId);
+    require_once(VIEWS . "/workout/{$_GET['controller']}View.php");
 }
 
 if (isset($_GET['action'])) {

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="">
+    <form action="index.php?" <?= (isset($_SESSION['user'])) ? "controller=userDetail&action=updateUser" : "controller=userDetail&action=addUser" ?> method="GET">
         <label for="name">name:</label>
         <input type="text" name="name" id="name">
         <label for="email">email:</label>
