@@ -3,7 +3,7 @@ require_once("./config/constants.php");
 require_once("./models/userModel.php");
 
 function getUser($id)
-{
+{;
     $data = get($id);
     require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }
@@ -22,16 +22,6 @@ function addUser()
     require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }
 
-function deleteUser($id)
-{
-    return delete($id);
-}
-
-function getAllUser()
-{
-    return getAll();
-}
-
 function getQueryStringParameters(): array
 {
     parse_str(file_get_contents('php://input'), $query);
@@ -40,4 +30,6 @@ function getQueryStringParameters(): array
 
 if (isset($_GET['action'])) {
     isset($_GET['param']) ?  $_GET['action']($_GET['param']) : $_GET['action']();
+} else {
+    require_once(VIEWS . "/user/{$_GET['controller']}View.php");
 }

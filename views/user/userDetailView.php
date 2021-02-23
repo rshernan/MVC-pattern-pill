@@ -9,18 +9,18 @@
 </head>
 
 <body>
-    <form action=<?= (isset($_SESSION['user'])) ? "index.php?controller=userDetail&action=updateUser" : "index.php?controller=userDetail&action=addUser" ?> method="POST">
+    <form action=<?= (isset($data)) ? "index.php?controller=userDetail&action=updateUser" : "index.php?controller=userDetail&action=addUser" ?> method="POST">
         <label for="name">name:</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" value=<?= isset($data) ? $data['name'] : '' ?>>
         <label for="email">email:</label>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email" value=<?= isset($data) ? $data['email'] : '' ?>>
         <?php
         if (!isset($_GET['action'])) {
             echo '<label for="password">password:</label>
             <input type="password" name="password" id="password">';
         }
         ?>
-        <input type="submit" value=<?= (isset($_SESSION['user'])) ? "modificar" : "crear" ?>>
+        <input type="submit" value=<?= (isset($data)) ? "modificar" : "crear" ?>>
     </form>
 </body>
 
