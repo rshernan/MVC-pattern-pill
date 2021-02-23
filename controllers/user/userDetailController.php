@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION["userId"])){
+    $url = 'http://localhost/MVC-pattern-pill/index.php';
+    header('Location: ' . $url);
+    exit();
+}
 require_once("./config/constants.php");
 require_once("./models/userModel.php");
 
@@ -32,6 +40,10 @@ function getQueryStringParameters(): array
 {
     parse_str(file_get_contents('php://input'), $query);
     return $query;
+}
+
+function logoutUser (){
+    logout();
 }
 
 if (isset($_GET['action'])) {

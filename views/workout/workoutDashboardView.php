@@ -11,7 +11,7 @@
 <body>
     <h2>Workout dashboard</h2>
     <?php
-    foreach ($data as $workout) {
+    foreach ($data as $workout) {//TODO: rows and colums
         echo $workout["name"];
         echo $workout["mode"];
         echo $workout["duration"];
@@ -19,7 +19,7 @@
         echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=deleteWorkout&param=" . $workout["id"] . "'><button>Delete workout</button></a>";
         echo "<br>";
     }
-    echo "<a href=''><Logout</button></a>";
+    echo "<a href='http://localhost/MVC-pattern-pill/index.php?controller=userDetail&action=logout'><button>Logout</button></a>";
     ?>
 
 </body>

@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION["userId"])){
+    $url = 'http://localhost/MVC-pattern-pill/index.php';
+    header('Location: ' . $url);
+    exit();
+}
+
 require_once("./config/constants.php");
 require_once("./models/workoutModel.php");
 

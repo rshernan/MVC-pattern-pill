@@ -2,6 +2,12 @@
 
 session_start();
 
+if (!isset($_SESSION["userId"])){
+    $url = 'http://localhost/MVC-pattern-pill/index.php';
+    header('Location: ' . $url);
+    exit();
+}
+
 require_once("./config/constants.php");
 require_once("./models/workoutModel.php");
 
@@ -13,8 +19,9 @@ function getWorkout($id)
 function deleteWorkout($id)
 {
     delete($id);
-    var_dump($_SESSION["userId"]);
-    getAllWorkoutFromUser($_SESSION["userId"]);
+    $url = 'http://localhost/MVC-pattern-pill/index.php?controller=workoutDashboard&action=getAllWorkoutFromUser&param=' . $_SESSION["userId"];
+    header('Location: ' . $url);
+    exit();
 }
 
 function getAllWorkoutFromUser($userId)
