@@ -39,7 +39,7 @@ For contributions, please fork the project, change whatever you want and create 
 
 This project is under GNU license
 
-## Thansk 🎁
+## Thanks 🎁
 
 - Thanks to our classmates for the support and the funny moments while developing.
 
