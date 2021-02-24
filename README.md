@@ -1,7 +1,7 @@
 
  MVC Pattern Pill
 
-_This proyect is a little project to learn how to implement the Model View Controller(MVC) architecture in a proyect developed in PHP_
+_This project is a little project to learn how to implement the Model View Controller(MVC) architecture in a proyect developed in PHP_
 
 ## Starting 🚀
 
