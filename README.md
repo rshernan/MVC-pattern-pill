@@ -5,7 +5,7 @@ _This project is a little project to learn how to implement the Model View Contr
 
 ## Starting 🚀
 
-_First you need to have a local copy of the repository, for this what you have to do is start your IDE and in the console copy the next command:_
+_First you need to have a local copy of the repositor. For this, go to your IDE and copy the next command in the console:_
 
 ```
 git clone https://github.com/rshernan/MVC-pattern-pill.git
@@ -41,7 +41,7 @@ This project is under GNU license
 
 ## Thansk 🎁
 
-- Thanks to our classmates for the support and the funny moment while developing.
+- Thanks to our classmates for the support and the funny moments while developing.
 
 ---
 
